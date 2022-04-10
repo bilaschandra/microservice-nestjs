@@ -1,5 +1,11 @@
 # microservice-nestjs-rabbitmq
 Scaffold quickly your next [NestJS 8](https://nestjs.com/) API project with 
+- NestJS
+- RabbitMQ
+- MongoDB
+- Docker (docker-compose)
+- JWT
+- Nodemailer
 
 # Auth service (NestJS, RabbitMQ, MongoDB, Docker compose)
 - [auth-service](https://github.com/bilaschandra/microservice-nestjs/auth-service) is a service to create a new user registration, login, token etc. We are using JWT to hangle the token. This service will publish a message (rabbit event) after registering a new user. To publish the event, here is using `Topic` type, `Exchange` key and `Routing` key. So that, the consumer should consume the event/message with the exchange key with the routing key.
