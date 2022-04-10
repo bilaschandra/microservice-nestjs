@@ -1,0 +1,44 @@
+version: "3"
+
+networks:
+  event_driven_practice:
+    external: true
+
+services:
+  mongodb:
+    image: mongo:5.0
+    ports:
+      - 27017:27017
+    volumes:
+      - ~/apps/mongo:/data/db
+    networks:
+      - event_driven_practice
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=practice
+      - MONGO_INITDB_ROOT_PASSWORD=practice
+
+  rmq:
+    image: rabbitmq:3.9.13-management
+    networks:
+      - event_driven_practice
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    command: bash -c "rabbitmq-plugins enable --offline rabbitmq_tracing && rabbitmq-server"
+
+  auth-service:
+    image: node:14-alpine
+    volumes:
+      - ./:/app
+      - ./.npmrcempty:/app/.npmrc
+    working_dir: /app
+    depends_on:
+      - mongodb
+      - rmq
+    networks:
+      - event_driven_practice
+    env_file:
+      - .env
+    ports:
+      - "6061:6061"
+    command: "npm run start:dev"
