@@ -53,7 +53,7 @@ Once the dependencies are installed, you can now configure your project by creat
 vi .env
 ```
 
-## 1.3. Default NPM commands
+## 1.3. Default NPM commands (We recommended to use docker)
 
 The NPM commands below are already included with this template and can be used to quickly run, build and test your project.
 Go to the `auth-service` folder and run the bellow commands. Same way you can run the `email-service` microservice.
