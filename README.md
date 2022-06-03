@@ -1,4 +1,4 @@
-# microservice-nestjs-rabbitmq
+# microservice-nestjs-rabbitmq (event driven microservice to microservice communication)
 Scaffold quickly your next [NestJS 8](https://nestjs.com/) API project with 
 - NestJS
 - RabbitMQ
